@@ -14,5 +14,5 @@
 @property (nonatomic, strong) NSArray *arguments;  
 
 +(SqliteQuery *)queryWithString:(NSString *)sql andArguments:(NSArray *)arguments;
-
+ 
 @end

@@ -16,7 +16,7 @@
     instance.sql = sql;
     instance.arguments = arguments;
     
-    return instance;
+    return instance; 
 }
 
 @end
