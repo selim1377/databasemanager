@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+ 
 @interface SqliteQuery : NSObject
 
 @property (nonatomic, strong) NSString *sql;
