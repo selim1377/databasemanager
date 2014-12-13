@@ -29,7 +29,7 @@ typedef void (^FMDBCompletionBlock)(NSMutableArray *results, BOOL isEmpty);
 @property (copy, nonatomic)     FMDBCompletionBlock    completionBlock;
 @property (nonatomic, strong)   SqliteQuery *databaseQuery;
 
-
+-(id)initWithDatabase:(NSString *)databaseFilename;
 -(BOOL)open;
 -(NSMutableArray *)convertResultSet:(FMResultSet *)resultSet;
 -(void)queryWithParser:(ConvertBlock)b completion:(FMDBCompletionBlock)completion forSql:(SqliteQuery *)query;

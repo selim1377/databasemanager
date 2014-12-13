@@ -37,11 +37,12 @@ static NSString * databasePath = @"";
 
 @implementation DatabaseManager
 
--(id)init
+-(id)initWithDatabase:(NSString *)databaseFilename
 {
     if ([super init]) {
         
-        databasePath = [[FileManager documentsDirectory] stringByAppendingString:@"databases/eczaplus.sqlite"];
+        NSString * path = [NSString stringWithFormat:@"databases/%@",databaseFilename];
+        databasePath = [[FileManager documentsDirectory] stringByAppendingString:path];
     }
     
     return self;
