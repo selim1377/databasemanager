@@ -16,13 +16,13 @@
 @implementation ViewController
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
+    [super viewDidLoad]; 
     // Do any additional setup after loading the view, typically from a nib.
     
     
     DatabaseManager *db = [[DatabaseManager alloc] initWithDatabase:@"sgk.sqlite"];
     if ([db open]){
-        
+         
         NSString * sql = @"Select * from people";
         NSMutableArray *arguments = [NSMutableArray new];
         SqliteQuery *query = [SqliteQuery queryWithString:sql andArguments:arguments];

@@ -48,7 +48,7 @@ static NSString * databasePath = @"";
     return self;
 }
 
--(BOOL)open
+-(BOOL)open 
 {
     NSLog(@"Original databse path %@",databasePath);
     if (![FileManager fileExists:databasePath]) {

@@ -11,7 +11,7 @@
 @interface SqliteQuery : NSObject
 
 @property (nonatomic, strong) NSString *sql;
-@property (nonatomic, strong) NSArray *arguments;
+@property (nonatomic, strong) NSArray *arguments;  
 
 +(SqliteQuery *)queryWithString:(NSString *)sql andArguments:(NSArray *)arguments;
 
