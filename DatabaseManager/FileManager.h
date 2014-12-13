@@ -11,6 +11,8 @@
 @interface FileManager : NSObject
 
 +(NSString *)documentsDirectory;
++(BOOL)fileExists:(NSString *)filePath;
++(void)copyItem:(NSString *)bundleFileName toPath:(NSString *)targetPath;
 +(BOOL)addSkipBackupAttributeToItemAtURL:(NSURL *)URL;
 +(void)listFiles;
 @end

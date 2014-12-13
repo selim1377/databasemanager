@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "DatabaseManager.h"
 
 @interface ViewController ()
 
@@ -17,6 +18,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    
+    DatabaseManager *db = [[DatabaseManager alloc] initWithDatabase:@"sgk.sqlite"];
+    if ([db open]){
+        
+    }
+
 }
 
 - (void)didReceiveMemoryWarning {

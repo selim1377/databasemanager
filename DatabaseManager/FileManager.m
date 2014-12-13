@@ -13,15 +13,31 @@
 
 +(NSString *)documentsDirectory
 {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,     NSUserDomainMask, YES);
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
-    documentsDirectory = [documentsDirectory stringByAppendingString:@"/appdata/"];
+    documentsDirectory = [documentsDirectory stringByAppendingString:@"/appdata/databases/"];
     
     NSError *error = nil;
     if (![[NSFileManager defaultManager] fileExistsAtPath:documentsDirectory])
-        [[NSFileManager defaultManager] createDirectoryAtPath:documentsDirectory withIntermediateDirectories:NO attributes:nil error:&error];
+        [[NSFileManager defaultManager] createDirectoryAtPath:documentsDirectory withIntermediateDirectories:YES attributes:nil error:&error];
     
     return documentsDirectory;
+}
+
++(BOOL)fileExists:(NSString *)filePath
+{
+    return [[NSFileManager defaultManager] fileExistsAtPath:filePath];
+}
+
++(void)copyItem:(NSString *)bundleFileName toPath:(NSString *)targetPath
+{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    NSString *filePathFromApp = [[[NSBundle mainBundle]resourcePath]stringByAppendingPathComponent:bundleFileName];
+    
+    NSLog(@"Bundle Path %@",filePathFromApp);
+    NSLog(@"Target Path %@",targetPath);
+    [fileManager copyItemAtPath:filePathFromApp toPath:targetPath error:nil];
 }
 
 +(BOOL)addSkipBackupAttributeToItemAtURL:(NSURL *)URL

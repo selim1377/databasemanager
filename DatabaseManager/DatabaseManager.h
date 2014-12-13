@@ -24,6 +24,7 @@ typedef void (^FMDBCompletionBlock)(NSMutableArray *results, BOOL isEmpty);
 
 @interface DatabaseManager : NSObject
 
+@property (nonatomic, strong) NSString *filename;
 @property (strong, nonatomic)   FMDatabase      *database;
 @property (copy, nonatomic)     ConvertBlock    block;
 @property (copy, nonatomic)     FMDBCompletionBlock    completionBlock;

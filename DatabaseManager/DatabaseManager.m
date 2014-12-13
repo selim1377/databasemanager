@@ -41,8 +41,8 @@ static NSString * databasePath = @"";
 {
     if ([super init]) {
         
-        NSString * path = [NSString stringWithFormat:@"databases/%@",databaseFilename];
-        databasePath = [[FileManager documentsDirectory] stringByAppendingString:path];
+        self.filename = databaseFilename;
+        databasePath = [[FileManager documentsDirectory] stringByAppendingString:self.filename];
     }
     
     return self;
@@ -50,11 +50,21 @@ static NSString * databasePath = @"";
 
 -(BOOL)open
 {
+    NSLog(@"Original databse path %@",databasePath);
+    if (![FileManager fileExists:databasePath]) {
+        
+        // copy it from bundle
+        [FileManager copyItem:self.filename toPath:databasePath];
+    }
+    
+    
+    
     self.database = [FMDatabase databaseWithPath:databasePath];
     
     BOOL opened = [self.database open];
     if (!opened) {
-        self.database = nil;
+        
+        NSLog(@"Database can not open !");
     }
     
     return opened;
