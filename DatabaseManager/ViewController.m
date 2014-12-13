@@ -23,6 +23,19 @@
     DatabaseManager *db = [[DatabaseManager alloc] initWithDatabase:@"sgk.sqlite"];
     if ([db open]){
         
+        NSString * sql = @"Select * from people";
+        NSMutableArray *arguments = [NSMutableArray new];
+        SqliteQuery *query = [SqliteQuery queryWithString:sql andArguments:arguments];
+        
+        [db queryAsyncWithParser:^id(FMResultSet *resultSet) {
+            
+            NSLog(@"Result set %@",[resultSet stringForColumn:@"name"]);
+            
+            return [NSString stringWithFormat:@"Done"];
+            
+        } completion:^(NSMutableArray *results, BOOL isEmpty) {
+            
+        } forSql:query];
     }
 
 }
